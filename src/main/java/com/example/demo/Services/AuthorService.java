@@ -39,13 +39,13 @@ public class AuthorService {
     }
 
     @Transactional
-    public void updateAuthor(Long id, String name, int age) {
+    public void updateAuthor(Long id, Author newAuthor ) {
         Author author = authorRepository.findById(id).orElseThrow(() -> new IllegalStateException("Author not found"));
-        if (name != null && author.getName() != name) {
-            author.setName(name);
+        if (newAuthor.getName()!= null && newAuthor.getName() != author.getName()) {
+            author.setName(newAuthor.getName());
         }
-        if (age > 0 && author.getAge() != age) {
-            author.setAge(age);
+        if (newAuthor.getAge() > 0 && author.getAge() != newAuthor.getAge()) {
+            author.setAge(newAuthor.getAge());
         }
     }
 }

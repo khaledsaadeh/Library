@@ -39,7 +39,16 @@ public class BookController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public void updateBook(@PathVariable("id") Long id,@RequestBody String name,@RequestBody String publishYear,@RequestBody Author author) {
-        bookService.updateBook(id, name, publishYear, author);
+    public void updateBook(@PathVariable("id") Long id, @RequestBody Book book) {
+        bookService.updateBook(id, book);
+    }
+
+    @GetMapping(path = "/get/{author}")
+    public List<Book> findBooksByAuthorName(@PathVariable("author") String byAuthor) {
+        return bookService.findBooksByAuthorName(byAuthor);
+    }
+    @GetMapping(path = "unpublished/{flag}")
+    public List<Book> findPublished(@PathVariable("flag") boolean flag){
+        return bookService.findPublishedBooks(flag);
     }
 }

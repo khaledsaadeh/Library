@@ -10,6 +10,7 @@ public class Book {
     private Long id;
     private String name;
     private String publishYear;
+    private boolean published;
     @ManyToOne(cascade = CascadeType.ALL)
     private Author author;
 
@@ -23,6 +24,14 @@ public class Book {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isPublished() {
+        return published;
+    }
+
+    public void setPublished(boolean published) {
+        this.published = published;
     }
 
     public void setName(String name) {

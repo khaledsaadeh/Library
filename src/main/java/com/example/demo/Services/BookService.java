@@ -6,6 +6,7 @@ import com.example.demo.Repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,14 +38,39 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public void updateBook(Long id, String name, String publishYear, Author author) {
+    public void updateBook(Long id, Book newBook) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book not found"));
-        if (name != null && book.getName() != name) {
-            book.setName(name);
+        if (newBook.getName() != null && book.getName() != newBook.getName()) {
+            book.setName(newBook.getName());
         }
-        if (publishYear != null && book.getPublishYear() != publishYear) {
-            book.setPublishYear(publishYear);
+        if (newBook.getPublishYear() != null && book.getPublishYear() != newBook.getPublishYear()) {
+            book.setPublishYear(newBook.getPublishYear());
         }
-        book.setAuthor(author);
+        book.setPublished(newBook.isPublished());
+        book.setAuthor(newBook.getAuthor());
+    }
+
+    public List<Book> findBooksByAuthorName(String name) {
+        List<Book> foundBooks = new ArrayList<>();
+        for (Book book : foundBooks) {
+            if (book.getAuthor().getName().equals(name)) {
+                foundBooks.add(book);
+            }
+        }
+        return foundBooks;
+    }
+
+    public List<Book> findPublishedBooks(boolean Unpublished) {
+        List<Book> books = bookRepository.findAll();
+        if (Unpublished == true) {
+            return books;
+        }
+        List<Book> publishedBooks = new ArrayList<>();
+        for (Book book : books) {
+            if (book.isPublished()) {
+                publishedBooks.add(book);
+            }
+        }
+        return publishedBooks;
     }
 }

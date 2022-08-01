@@ -51,14 +51,14 @@ public class AuthorServicesTest {
         verify(authorRepository).deleteById(1L);
     }
 
-    @Test
-    public void updateAuthor_methodCalled_authorUpdated() {
-        Author author = new Author();
-        author.setId(4L);
-        author.setAge(24);
-        author.setName("Khaled");
-
-        authorService.updateAuthor(4L, "Ahmad", 20);
-        Assertions.assertEquals("Ahmad", author.getName());
-    }
+//    @Test
+//    public void updateAuthor_methodCalled_authorUpdated() {
+//        Author author = new Author();
+//        author.setId(4L);
+//        author.setAge(24);
+//        author.setName("Khaled");
+//
+//        authorService.updateAuthor(4L, "Ahmad", 20);
+//        Assertions.assertEquals("Ahmad", author.getName());
+//    }
 }

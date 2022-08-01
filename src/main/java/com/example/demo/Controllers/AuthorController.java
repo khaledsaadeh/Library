@@ -39,7 +39,7 @@ public class AuthorController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public void updateAuthor(@PathVariable("id") Long id, @RequestBody String name, @RequestBody int age) {
-        authorService.updateAuthor(id, name, age);
+    public void updateAuthor(@PathVariable("id") Long id, @RequestBody Author author) {
+        authorService.updateAuthor(id, author);
     }
 }
