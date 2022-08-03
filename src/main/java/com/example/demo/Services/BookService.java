@@ -48,6 +48,7 @@ public class BookService {
         }
         book.setPublished(newBook.isPublished());
         book.setAuthor(newBook.getAuthor());
+        book.setQuantity(newBook.getQuantity());
     }
 
     public List<Book> findBooksByAuthorName(String name) {

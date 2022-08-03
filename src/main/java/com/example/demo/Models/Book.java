@@ -13,7 +13,7 @@ public class Book {
     private boolean published;
     @ManyToOne(cascade = CascadeType.ALL)
     private Author author;
-
+    private int quantity;
     public Long getId() {
         return id;
     }
@@ -32,6 +32,14 @@ public class Book {
 
     public void setPublished(boolean published) {
         this.published = published;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setName(String name) {
